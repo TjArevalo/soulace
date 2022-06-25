@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import Navbar from "../Navbar/Navbar"
 import { Box, Grid, Typography } from '@mui/material';
 import ContactlessIcon from '@mui/icons-material/Contactless';
@@ -7,10 +7,28 @@ import AppleIcon from '@mui/icons-material/Apple';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
+import BackgroundVideo from "../../assets/video/SoulaceBackgroundCompressed.mov"
 
 export default function Home() {
+
+  const vidRef = useRef();
+  useEffect(() => { vidRef.current.play(); },[]);
+
   return (
       <Box sx={{p:0}}>
+        <video 
+          ref = {vidRef}
+          loop 
+          autoplay 
+          muted 
+          style={{
+            position:"absolute",
+            width:"100vw", 
+            height:"100vh", 
+            objectFit:"fill", 
+            zIndex:"-1"}}>
+          <source src={BackgroundVideo} type="video/mp4"/>
+        </video>
         <Navbar />
         <Grid container direction="row">
           <Grid item xs={3} sx={{height:"85vh"}} display="flex" alignItems="center">
