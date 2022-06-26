@@ -6,14 +6,14 @@ export default function Navbar() {
   return (
     <Grid
       maxWidth="xl"
-      sx={{height:"15vh", bgcolor: "secondary.main", p:0}}
+      sx={{position:"fixed", height:"15vh", p:0, zIndex:-0.5}}
       container
       spacing={0}
       direction="column"
       alignItems="center"
       justifyContent="center"
     >
-      <Typography varient="h1" sx={{color:'primary.light', fontsize:"12rem"}}>
+      <Typography variant="h1" sx={{color:'primary.light'}}>
         Soul/Ace
       </Typography>
     </Grid>
