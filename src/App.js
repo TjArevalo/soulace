@@ -1,8 +1,9 @@
-import React, {useEffect, useRef} from 'react'
-import { Home } from "./Components"
+import React, { useEffect, useRef, useState } from 'react'
+import { Home, LyricCollapse } from "./Components"
 import { Box } from "@mui/system"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import BackgroundVideo from "./assets/video/SoulaceBackgroundCompressed.mov"
+import lyricAPI from "./Components/API-calls/get"
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -42,34 +43,61 @@ const theme = createTheme({
 });
 
 export default function App() {
+  const [lyrics, setLyrics] = useState([]);
+
   const vidRef = useRef();
+
   // useEffect(() => { vidRef.current.play(); },[]);
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Box>
-        <Home />
-        <h1>Push</h1>
-        <h1>Push</h1>
-        <h1>Push</h1>
-        <h1>Push</h1>
-        <h1>Push</h1>
-        <h1>Push</h1>
-      </Box>
-      <video 
-          ref = {vidRef}
-          loop 
-          autoPlay 
-          muted 
-          style={{
-            position:"fixed",
-            width:"100vw", 
-            height:"100vh", 
-            top: 0,
-            objectFit:"fill", 
-            zIndex:"-1"}}>
-          <source src={BackgroundVideo} type="video/mp4"/>
-        </video>
-    </ThemeProvider>
-  )
+  useEffect(() => {
+    const fetchLyrics = async () => {
+      try {
+        const response = await lyricAPI.get('/lyrics')
+        // Axios automatically catches responses outside the 200 range.
+        setLyrics(response.data);
+        console.log(response.data);
+      } catch(err) {
+          if (err.response){
+            console.log(err.response.data)
+            console.log(err.response.status)
+        } else {
+          console.log(`Error: ${err.message}`)
+        }
+      }
+    }
+
+    fetchLyrics()
+  },[])
+
+  if(lyrics === []){
+    return <div />
+  } else { 
+      return (
+        <ThemeProvider theme={theme}>
+          <Box>
+            <Home />
+            {lyrics.map((song) => {
+              console.log(typeof song)
+              return(
+                <LyricCollapse song={song} key={song.id} />
+              )
+            })}
+          </Box>
+          <video 
+              ref = {vidRef}
+              loop 
+              autoPlay 
+              muted 
+              style={{
+                position:"fixed",
+                width:"100vw", 
+                height:"100vh", 
+                top: 0,
+                objectFit:"fill", 
+                zIndex:"-1"}}>
+              <source src={BackgroundVideo} type="video/mp4"/>
+            </video>
+        </ThemeProvider>
+      )
+  }
 }
