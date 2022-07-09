@@ -77,9 +77,9 @@ export default function App() {
           <Box>
             <Home />
             {lyrics.map((song) => {
-              console.log(typeof song)
+              // console.log(typeof song)
               return(
-                <LyricCollapse song={song} key={song.id} />
+                <LyricCollapse song={song} key={song.id} sx={{display:'flex', alignItems:'center' }} />
               )
             })}
           </Box>
