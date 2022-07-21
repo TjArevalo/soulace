@@ -77,7 +77,7 @@ export default function Home() {
             </Box>
           </Grid>
           <Grid item container xs={6} display="flex" justifyContent="center" alignItems="center">
-            <Box sx={{maxHeight: "400px", maxWidth:"400px"}} component="img" src={AlbumArt}></Box>
+            <Box sx={{maxHeight: "400px", maxWidth:"400px", borderRadius:'15px'}} component="img" src={AlbumArt}></Box>
           </Grid>
           <Grid item xs={3} display="flex" flexDirection="row-reverse" alignItems="center">
           <Box sx={{mr:2}} display="flex" flexDirection="column" textAlign="right">

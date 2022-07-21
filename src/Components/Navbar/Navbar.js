@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Typography } from '@mui/material';
+import { Box, Grid } from '@mui/material';
+import Logo from "../../assets/imgs/logo/SoulACE_White-Logo.png"
 
 export default function Navbar() {
 
@@ -13,9 +14,7 @@ export default function Navbar() {
       alignItems="center"
       justifyContent="center"
     >
-      <Typography variant="h1" sx={{color:'primary.light'}}>
-        Soul/Ace
-      </Typography>
+      <Box sx={{width: '110px', height: '70px'}} component="img" src={Logo} />
     </Grid>
   )
 }

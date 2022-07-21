@@ -1,6 +1,5 @@
 import React from 'react'
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Box } from '@mui/material'
-import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function LyricCollapse(song) {
     console.log(song)
@@ -13,12 +12,12 @@ export default function LyricCollapse(song) {
     )
 
   return (
-    <Accordion sx={{backgroundColor:'transparent', margin:0}}>
-        <AccordionSummary id={song.song.id} expandIcon={<VisibilityIcon sx={{color:'white'}} />}>
-            <Typography sx={{color: 'white'}}>{song.song.title}</Typography>
+    <Accordion sx={{backgroundColor:'transparent', width: '100vw', border:'transparent', display: 'flex', flexDirection:'column', alignItems:'center'}}>
+        <AccordionSummary id={song.song.id}>
+            <Typography variant='h1' sx={{color: 'white'}}>{song.song.title}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-            <Box sx={{color:'white'}}>{newText}</Box>
+            <Box variant='h2' sx={{color:'white'}}>{newText}</Box>
         </AccordionDetails>
     </Accordion>
 

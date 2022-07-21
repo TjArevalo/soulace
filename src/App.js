@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Home, LyricCollapse } from "./Components"
 import { Box } from "@mui/system"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {Typography} from "@mui/material"
 import BackgroundVideo from "./assets/video/SoulaceBackgroundCompressed.mov"
 import lyricAPI from "./Components/API-calls/get"
 import '@fontsource/roboto/300.css';
@@ -20,6 +21,7 @@ const theme = createTheme({
     }
   },
   typography:{
+    fontFamily:['"Krylon Regular"','"North Zone"'].join(','),
     h1:{
       fontSize: "2rem",
       fontStyle: "italic"
@@ -35,11 +37,15 @@ const theme = createTheme({
         cursor: "cell"
      },
     },
+    h3:{
+      fontSize:"1rem",
+      color: '#3D0066'
+    },
     link:{
       marginBottom: "5px",
       cursor: "cell"
     }
-  }
+  },
 });
 
 export default function App() {
@@ -76,12 +82,18 @@ export default function App() {
         <ThemeProvider theme={theme}>
           <Box>
             <Home />
+            <Box sx={{display: 'flex', justifyContent: 'center'}}>
+              <Typography variant='h3' sx={{textalign: 'center'}}>
+                My Word Is My Bond
+              </Typography>
+            </Box>
             {lyrics.map((song) => {
               // console.log(typeof song)
               return(
                 <LyricCollapse song={song} key={song.id} sx={{display:'flex', alignItems:'center' }} />
               )
             })}
+
           </Box>
           <video 
               ref = {vidRef}
