@@ -1,8 +1,8 @@
-import React, {useRef} from 'react'
-import { Home } from "./Components"
-import { Box } from "@mui/system"
+import React, {useRef} from 'react';
+import { Home, Navbar } from "./Components";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import BackgroundVideo from "./assets/video/SoulaceBackgroundCompressed.mov"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BackgroundVideo from "./assets/video/SoulaceBackgroundCompressed.mov";
 
 const theme = createTheme({
   palette: {
@@ -46,25 +46,28 @@ export default function App() {
 
   const vidRef = useRef();
   return (
-    <ThemeProvider theme={theme}>
-      <Box>
-        <Home />
-      </Box>
-      <video 
-          ref = {vidRef}
-          loop 
-          autoPlay 
-          muted 
-          style={{
-            position:"fixed",
-            width:"100vw", 
-            height:"100vh", 
-            top: 0,
-            objectFit:"fill", 
-            zIndex:"-1"}}>
-          <source src={BackgroundVideo} type="video/mp4"/>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+        </Routes>
+        <video 
+            ref = {vidRef}
+            loop 
+            autoPlay 
+            muted 
+            style={{
+              position:"fixed",
+              width:"100vw", 
+              height:"100vh", 
+              top: 0,
+              objectFit:"fill", 
+              zIndex:"-1"}}>
+            <source src={BackgroundVideo} type="video/mp4"/>
         </video>
-    </ThemeProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
 

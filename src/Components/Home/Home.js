@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from "../Navbar/Navbar"
 import { Box, Grid, Link, Typography } from '@mui/material';
-import ContactlessIcon from '@mui/icons-material/Contactless';
 import LyricCollapse from '../LyricCollapse/LyricCollapse';
-import lyricAPI from "../API-calls/get"
-import AlbumArt from "../../assets/imgs/Four.JPEG"
+import lyricAPI from '../API-calls/get'
+import AlbumArt from '../../assets/imgs/Four.JPEG'
 import AppleIcon from '@mui/icons-material/Apple';
 import CloudIcon from '@mui/icons-material/Cloud';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
+import ContactlessIcon from '@mui/icons-material/Contactless';
 
 export default function Home() {
 
@@ -39,9 +38,8 @@ export default function Home() {
   if(lyrics === []){
     return <div />
   } else { 
-    return (
+      return (
         <Box sx={{p:0}}>
-          <Navbar />
           <Grid container direction="row" sx={{height:"100vh"}}>
             <Grid item xs={3} display="flex" alignItems="center">
               <Box sx={{ml:2}} display="flex" flexDirection="column">
@@ -115,21 +113,19 @@ export default function Home() {
             </Box>
             </Grid>
           </Grid>
+          
           <Box sx={{display: 'flex', justifyContent: 'center'}}>
                 <Typography variant='h2' sx={{textalign: 'center', marginBottom:'20px'}}>
                   My Word Is My Bond
                 </Typography>
-              </Box>
+          </Box>
 
-
-
-              {lyrics.map((song) => {
-                return(
-                  <LyricCollapse song={song} key={song.id} sx={{display:'flex', alignItems:'center' }} />
-                )
-              })}
-
+          {lyrics.map((song) => {
+            return(
+              <LyricCollapse song={song} key={song.id} sx={{display:'flex', alignItems:'center' }} />
+            )
+          })}
         </Box>
-    )
+      )
   }
 }
