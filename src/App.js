@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import { Home, Navbar } from "./Components";
+import { Home, Navbar, About } from "./Components";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BackgroundVideo from "./assets/video/SoulaceBackgroundCompressed.mov";
@@ -35,6 +35,10 @@ const theme = createTheme({
       fontSize:"1.5rem",
       color: '#3D0066'
     },
+    subtitle2:{
+      fontSize:"0.9rem",
+      color: 'white'
+    },
     link:{
       marginBottom: "5px",
       cursor: "cell"
@@ -49,9 +53,12 @@ export default function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/about" element={<About />}/>
         </Routes>
+
         <video 
             ref = {vidRef}
             loop 

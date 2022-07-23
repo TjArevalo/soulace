@@ -12,9 +12,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import ContactlessIcon from '@mui/icons-material/Contactless';
 
 export default function Home() {
-
   const [lyrics, setLyrics] = useState([]);
-
   useEffect(() => {
     const fetchLyrics = async () => {
       try {
@@ -106,7 +104,7 @@ export default function Home() {
             </Grid>
             <Grid item xs={3} display="flex" flexDirection="row-reverse" alignItems="center">
             <Box sx={{mr:2}} display="flex" flexDirection="column" textAlign="right">
-              <Link variant="h1" underline="none" color="h1">{`About`}</Link>  
+              <Link variant="h1" underline="none" color="h1" href="/about">{`About`}</Link>  
               <Link variant="h1" underline="none" color="h1">{`Releases`}</Link>  
               <Link variant="h1" underline="none" color="h1">{`Merch (TBA)`}</Link>  
               <Link variant="h1" underline="none" color="h1">{`Contact`}</Link>  
@@ -115,9 +113,9 @@ export default function Home() {
           </Grid>
           
           <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                <Typography variant='h2' sx={{textalign: 'center', marginBottom:'20px'}}>
-                  My Word Is My Bond
-                </Typography>
+            <Typography variant='h2' sx={{textalign: 'center', marginBottom:'20px'}}>
+              My Word Is My Bond
+            </Typography>
           </Box>
 
           {lyrics.map((song) => {
