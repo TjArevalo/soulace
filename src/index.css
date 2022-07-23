@@ -1,0 +1,26 @@
+/* el-messiri-regular - latin */
+@font-face {
+    font-family: 'El Messiri';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/el-messiri-v16-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./assets/fonts/el-messiri-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./assets/fonts/el-messiri-v16-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./assets/fonts/el-messiri-v16-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./assets/fonts/el-messiri-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./assets/fonts/el-messiri-v16-latin-regular.svg#ElMessiri') format('svg'); /* Legacy iOS */
+  }
+/* el-messiri-500 - latin */
+@font-face {
+font-family: 'El Messiri';
+font-style: normal;
+font-weight: 500;
+src: url('./assets/fonts/el-messiri-v16-latin-500.eot'); /* IE9 Compat Modes */
+src: local(''),
+        url('./assets/fonts/el-messiri-v16-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('./assets/fonts/el-messiri-v16-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+        url('./assets/fonts/el-messiri-v16-latin-500.woff') format('woff'), /* Modern Browsers */
+        url('./assets/fonts/el-messiri-v16-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('./assets/fonts/el-messiri-v16-latin-500.svg#ElMessiri') format('svg'); /* Legacy iOS */
+}

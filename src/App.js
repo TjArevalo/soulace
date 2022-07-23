@@ -1,14 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Home, LyricCollapse } from "./Components"
+import React, {useRef} from 'react'
+import { Home } from "./Components"
 import { Box } from "@mui/system"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import {Typography} from "@mui/material"
 import BackgroundVideo from "./assets/video/SoulaceBackgroundCompressed.mov"
-import lyricAPI from "./Components/API-calls/get"
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 
 const theme = createTheme({
   palette: {
@@ -21,12 +15,8 @@ const theme = createTheme({
     }
   },
   typography:{
-    fontFamily:['"Krylon Regular"','"North Zone"'].join(','),
+    fontFamily:["El Messiri",].join(','),
     h1:{
-      fontSize: "2rem",
-      fontStyle: "italic"
-    },
-    h2:{
       color: "#FFFFFF",
       fontSize: "1.5rem",
       fontStyle: "italic",
@@ -37,8 +27,12 @@ const theme = createTheme({
         cursor: "cell"
      },
     },
-    h3:{
-      fontSize:"1rem",
+    h2:{
+      fontSize: "1.7rem",
+      color: "#F5CC00"
+    },
+    subtitle1:{
+      fontSize:"1.5rem",
       color: '#3D0066'
     },
     link:{
@@ -49,67 +43,28 @@ const theme = createTheme({
 });
 
 export default function App() {
-  const [lyrics, setLyrics] = useState([]);
 
   const vidRef = useRef();
-
-  // useEffect(() => { vidRef.current.play(); },[]);
-
-  useEffect(() => {
-    const fetchLyrics = async () => {
-      try {
-        const response = await lyricAPI.get('/lyrics')
-        // Axios automatically catches responses outside the 200 range.
-        setLyrics(response.data);
-        console.log(response.data);
-      } catch(err) {
-          if (err.response){
-            console.log(err.response.data)
-            console.log(err.response.status)
-        } else {
-          console.log(`Error: ${err.message}`)
-        }
-      }
-    }
-
-    fetchLyrics()
-  },[])
-
-  if(lyrics === []){
-    return <div />
-  } else { 
-      return (
-        <ThemeProvider theme={theme}>
-          <Box>
-            <Home />
-            <Box sx={{display: 'flex', justifyContent: 'center'}}>
-              <Typography variant='h3' sx={{textalign: 'center'}}>
-                My Word Is My Bond
-              </Typography>
-            </Box>
-            {lyrics.map((song) => {
-              // console.log(typeof song)
-              return(
-                <LyricCollapse song={song} key={song.id} sx={{display:'flex', alignItems:'center' }} />
-              )
-            })}
-
-          </Box>
-          <video 
-              ref = {vidRef}
-              loop 
-              autoPlay 
-              muted 
-              style={{
-                position:"fixed",
-                width:"100vw", 
-                height:"100vh", 
-                top: 0,
-                objectFit:"fill", 
-                zIndex:"-1"}}>
-              <source src={BackgroundVideo} type="video/mp4"/>
-            </video>
-        </ThemeProvider>
-      )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <Box>
+        <Home />
+      </Box>
+      <video 
+          ref = {vidRef}
+          loop 
+          autoPlay 
+          muted 
+          style={{
+            position:"fixed",
+            width:"100vw", 
+            height:"100vh", 
+            top: 0,
+            objectFit:"fill", 
+            zIndex:"-1"}}>
+          <source src={BackgroundVideo} type="video/mp4"/>
+        </video>
+    </ThemeProvider>
+  )
 }
+
